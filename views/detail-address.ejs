@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Detail Alamat</h2>
+      <% if (!address) { %>
+      <div class="alert alert-danger fw-bold" role="alert">
+        Data Alamat tidak ada! <br />
+        <a href="/address" class="alert-link fw-normal"
+          >&laquo; Kembali ke daftar alamat</a
+        >
+      </div>
+
+      <% } else { %>
+      <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white">
+          <p>Alamat</p>
+          <a href="/address" class="btn btn-light btn-sm float-end"
+            >&laquo; Kembali ke daftar alamat</a
+          >
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <h5 class="card-title"><strong>Kota:</strong></h5>
+              <p class="card-text"><%= address.kota %></p>
+              <h5 class="card-title"><strong>Kode Pos:</strong></h5>
+              <p class="card-text"><%= address.kodePos %></p>
+            </div>
+            <div class="col-md-6">
+              <h5 class="card-title"><strong>Jalan:</strong></h5>
+              <p class="card-text"><%= address.jalan %></p>
+              <h5 class="card-title"><strong>Nomor Telepon:</strong></h5>
+              <p class="card-text"><%= address.noTelp %></p>
+            </div>
+            <div class="col-md-6 mt-2">
+              <h5 class="card-title"><strong>RT/RW:</strong></h5>
+              <p class="card-text"><%= address.rt %> / <%= address.rw %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

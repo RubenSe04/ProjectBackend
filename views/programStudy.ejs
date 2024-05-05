@@ -1,0 +1,83 @@
+<div class="container mt-3 d-flex flex- justify-content-center">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>List Program Studi</h2>
+
+      <a href="/programStudy/add" class="btn btn-primary mb-2">
+        Tambah Data Program Studi</a
+      >
+
+      <% if (msg?.length !== 0) { %>
+      <div class="alert alert-success" id="alertMsg" role="alert">
+        <%= msg %>
+      </div>
+      <% } %>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama Program Studi</th>
+            <th scope="col">Fakultas</th>
+            <th scope="col">Akreditasi</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (programStudi.length === 0) { %>
+          <tr>
+            <td colspan="5">
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data prodi masih kosong!
+              </div>
+            </td>
+          </tr>
+
+          <% } %> <% programStudi.forEach((prodi, i) => { i++ %>
+          <tr>
+            <th scope="row"><%= i++ %></th>
+            <td><%= prodi.namaProdi %></td>
+            <td><%= prodi.fakultas %></td>
+            <td><%= prodi.akreditasi %></td>
+            <td class="d-flex gap-2">
+              <a
+                href="/program-study/<%= prodi.namaProdi %>"
+                class="btn btn-success badge rounded-pill"
+                ><i class="bi bi-info-circle"></i> detail</a
+              >
+              <a
+                href="/program-study/edit/<%= prodi.namaProdi %>"
+                class="btn btn-info badge"
+                >ubah</a
+              >
+
+              <form
+                action="/program-study/<%= prodi.namaProdi %>?_method=DELETE"
+                method="POST"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button
+                  type="submit"
+                  class="btn btn-danger badge"
+                  onclick="return confirm('yakin?')"
+                >
+                  hapus
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  // Fungsi untuk menyembunyikan notifikasi setelah 2 detik
+  setTimeout(() => {
+    const alertMsg = document.getElementById("alertMsg");
+    if (alertMsg) {
+      alertMsg.style.display = "none";
+    }
+  }, 2000);
+</script>

@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Form Ubah Data Contact</h2>
+
+            <% if (typeof errors != 'undefined') { %>
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                  <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                  <% }) %>
+                </ul>
+              </div>
+            <% } %>
+
+            <form method="post" action="/address?_method=PUT">
+                <input type="hidden" name="_id" value="<%= address._id %>" />
+                <div class="mb-3">
+                  <label for="kota" class="form-label">Kota</label>
+                  <input type="text" value="<%= address.kota %>"  placeholder="Kota Kamu" class="form-control" id="kota" name="kota" required>
+                  </div>
+                <div class="mb-3">
+                  <label for="jalan" class="form-label">Jalan</label>
+                  <input type="jalan" value="<%= address.jalan %>"  placeholder="Jalan Rumah Kamu" class="form-control" id="jalan" name="jalan" required>
+                  <div class="input-group mb-3 mt-2">
+                      <span class="input-group-text">RT</span>
+                    <input type="number" value="<%= address.rt %>"  class="form-control" placeholder="RT" aria-label="RT" id="rt" name="rt">
+                    <span class="input-group-text">RW</span>
+                    <input type="number" class="form-control" value="<%= address.rw %>"  placeholder="RW" aria-label="RW" id="rw" name="rw">
+                  </div>
+                  <div class="mb-3">
+                    <label for="kodePos" class="form-label">Kode Pos</label>
+                    <input type="number" value="<%= address.kodePos %>"   placeholder="Kode Pos" class="form-control" id="kodePos" name="kodePos" required>
+                </div>
+                  <div class="mb-3">
+                    <label for="noTelp" class="form-label">Nomor Telepon</label>
+                    <input type="tel" value="<%= address.noTelp %>"  placeholder="Nomor Telepon" class="form-control" id="noTelp" name="noTelp" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Ubah Data Alamat</button>
+                <a
+                href="/address"
+                class="btn btn-success"
+                > Batal</a>
+              </form>
+        </div>
+    </div>
+</div>

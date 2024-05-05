@@ -1,0 +1,15 @@
+<h1>Welcome to Libary Contact App!</h1>
+
+    <h4>Daftar Anggota Kelompok : </h4>
+    <% if (mahasiswa.length < 1) { %>
+       <p>Data mahasiswa masih kosong.</p>
+     
+    <% } else { %>
+        <% mahasiswa.forEach(mhs => { %>
+        <ul>
+            <li>Nama : <%= mhs.nama  %></li>
+            <li>Nim : <%= mhs.nim  %></li>
+            <li>Email : <%= mhs.email  %></li>
+        </ul>
+    <% }) %> <% } %>
+    

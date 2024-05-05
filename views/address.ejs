@@ -1,0 +1,87 @@
+<div class="container mt-3 d-flex flex- justify-content-center">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>List Alamat</h2>
+
+      <a href="/address/add" class="btn btn-primary mb-2">
+        Tambah Data Alamat</a
+      >
+
+      <% if (msg?.length !== 0) { %>
+      <div class="alert alert-success" id="alertMsg" role="alert">
+        <%= msg %>
+      </div>
+      <% } %>
+
+      <table class="table">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">No</th>
+            <th scope="col">Kota</th>
+            <th scope="col">Jalan</th>
+            <th scope="col">Kode Pos</th>
+            <th scope="col">Nomor Telepon</th>
+            <th scope="col">RT/RW</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (address.length === 0) { %>
+          <tr>
+            <td colspan="7">
+              <div class="alert alert-danger fw-bold" role="alert">
+                Data Alamat masih kosong!
+              </div>
+            </td>
+          </tr>
+
+          <% } %> <% address.forEach((alamat, i) => { i++ %>
+          <tr class="text-center">
+            <th scope="row"><%= i++ %></th>
+            <td><%= alamat.kota %></td>
+            <td><%= alamat.jalan %></td>
+            <td><%= alamat.kodePos %></td>
+            <td><%= alamat.noTelp %></td>
+            <td><%= alamat.rt %> / <%= alamat.rw %></td>
+            <td class="d-flex gap-2">
+              <a
+                href="/address/<%= alamat._id %>"
+                class="btn btn-success badge rounded-pill"
+                ><i class="bi bi-info-circle"></i> detail</a
+              >
+              <a
+                href="/address/edit/<%= alamat._id %>"
+                class="btn btn-info badge"
+                >ubah</a
+              >
+
+              <form
+                action="/address/<%= alamat._id %>?_method=DELETE"
+                method="POST"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button
+                  type="submit"
+                  class="btn btn-danger badge"
+                  onclick="return confirm('yakin?')"
+                >
+                  hapus
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<script>
+  // Fungsi untuk menyembunyikan notifikasi setelah 2 detik
+  setTimeout(() => {
+    const alertMsg = document.getElementById("alertMsg");
+    if (alertMsg) {
+      alertMsg.style.display = "none";
+    }
+  }, 2000);
+</script>

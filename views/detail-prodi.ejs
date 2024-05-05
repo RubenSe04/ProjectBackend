@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Detail Program Study</h2>
+      <% if (!programStudi) { %>
+      <div class="alert alert-danger fw-bold" role="alert">
+        Data Prodi tidak ada! <br />
+        <a href="/program-study" class="alert-link fw-normal"
+          >&laquo; Kembali ke daftar program study</a
+        >
+      </div>
+
+      <% } else { %>
+      <div class="card shadow mb-4">
+        <div class="card-header bg-primary text-white">
+          Program Study <%= programStudi.namaProdi %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= programStudi.namaProdi %></h5>
+          <p class="card-text">
+            <strong>Fakultas:</strong> <%= programStudi.fakultas %>
+          </p>
+          <p class="card-text">
+            <strong>Akreditasi:</strong> <%= programStudi.akreditasi %>
+          </p>
+          <a href="/program-study" class="btn btn-primary"
+            >Kembali ke daftar program studi</a
+          >
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+  </div>
+</div>
